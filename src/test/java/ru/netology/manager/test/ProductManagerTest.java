@@ -8,9 +8,9 @@ import ru.netology.domain.Smartphone;
 import ru.netology.manager.ProductManager;
 import ru.netology.repository.ProductRepository;
 public class ProductManagerTest {
-    Product book1 = new Book(1, "Три мушкетера", 300, "Дюма");
-    Product phone1 = new Smartphone(2, "3210", 5000, "Nokia");
-    Product phone2 = new Smartphone(3, "3310", 7500, "Nokia");
+    Product book1 = new Book(1, "Двенадцать лет спустя", 300, "Дюма");
+    Product phone1 = new Smartphone(2, "x321", 5000, "Nokia");
+    Product phone2 = new Smartphone(3, "x331", 7500, "Nokia");
     Product phone3 = new Smartphone(4, "x10", 33400, "Nokia");
     Product book2 = new Book(5, "Двадцать лет спустя", 450, "Дюма");
     Product book3 = new Book(6, "Десять лет спустя", 740, "Дюма");
@@ -28,8 +28,8 @@ public class ProductManagerTest {
         manager.removeById(2);
         manager.findAll();
 
-        Product[] actual = manager.searchBy("В");
-        Product[] expected = {book1, book2};
+        Product[] actual = manager.searchBy("Д");
+        Product[] expected = {book1, book2, book3};
         Assertions.assertArrayEquals(expected, actual);
     }
     @Test
@@ -45,7 +45,7 @@ public class ProductManagerTest {
 
 
 
-        Product[] actual = manager.searchBy("Si");
+        Product[] actual = manager.searchBy("No");
         Product[] expected = {};
         Assertions.assertArrayEquals(expected, actual);
     }
@@ -67,7 +67,7 @@ public class ProductManagerTest {
         ProductRepository repo1 = new ProductRepository();
         ProductManager manager1 = new ProductManager(repo1);
 
-        Product[] actual1 = manager1.searchBy("В");
+        Product[] actual1 = manager1.searchBy("Д");
         Product[] expected1 = {};
         Assertions.assertArrayEquals(expected, actual);
 
